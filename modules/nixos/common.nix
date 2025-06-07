@@ -19,7 +19,7 @@
     settings.auto-optimise-store = true;
   };
 
-  environment.systemPackages = with pkgs; [ git git-extras wget curl ];
+  environment.systemPackages = with pkgs; [ git wget curl ];
 
   users.users.sokolawesome = {
     isNormalUser = true;

@@ -8,7 +8,7 @@
     oh-my-zsh = {
       enable = true;
       theme = "xiong-chiamiov-plus";
-      plugins = [ "git" "archlinux" ];
+      plugins = [ "git" ];
     };
     history = {
       size = 10000;
@@ -33,10 +33,6 @@
           selectedLineBgColor = [ "#45475a" ];
           optionsTextColor = [ "#89b4fa" ];
         };
-      };
-      git.paging = {
-        colorArg = "always";
-        pager = "git-delta --dark --paging never";
       };
       os.edit = "vscode";
     };
