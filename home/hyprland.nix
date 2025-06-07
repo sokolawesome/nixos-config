@@ -72,7 +72,7 @@
     #--Move windows--
     bind = $mainMod SHIFT, left, movewindow, l
     bind = $mainMod SHIFT, right, movewindow, r
-    bind = $mainMd SHIFT, up, movewindow, u
+    bind = $mainMod SHIFT, up, movewindow, u
     bind = $mainMod SHIFT, down, movewindow, d
 
     #--Resize windows--

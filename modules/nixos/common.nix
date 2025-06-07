@@ -20,16 +20,13 @@
 
   networking.networkmanager.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    curl
-  ];
+  environment.systemPackages = with pkgs; [ git git-delta wget curl ];
 
   users.users.sokolawesome = {
     isNormalUser = true;
     description = "Aleksandr Sokolov";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
