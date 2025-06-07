@@ -16,6 +16,7 @@
     rofi-wayland
     dunst
     wl-clipboard
+    hyprpaper
     xfce.thunar
     pamixer
     playerctl
