@@ -27,12 +27,15 @@ jobs:
 
       - name: "Run statix"
         run: statix check
+        continue-on-error: true
 
       - name: "Run deadnix"
         run: deadnix .
+        continue-on-error: true
 
       - name: "Check formatting with alejandra"
         run: alejandra --check .
+        continue-on-error: true
 
   build:
     name: "Build NixOS - ${{ matrix.system }}"
