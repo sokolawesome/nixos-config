@@ -18,9 +18,11 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
+  programs.zsh.enable = true;
+
   networking.networkmanager.enable = true;
 
-  environment.systemPackages = with pkgs; [ git git-delta wget curl ];
+  environment.systemPackages = with pkgs; [ git git-extras wget curl ];
 
   users.users.sokolawesome = {
     isNormalUser = true;

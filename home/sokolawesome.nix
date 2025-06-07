@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [ ./hyprland.nix ./waybar.nix ];
@@ -63,7 +63,7 @@
   # =================================================
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Macchiato";
+    themeFile = "Catppuccin-Macchiato";
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 12;
@@ -113,8 +113,8 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
 
     oh-my-zsh = {
       enable = true;
