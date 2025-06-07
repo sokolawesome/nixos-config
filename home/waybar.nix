@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs.waybar = {
     enable = true;
@@ -16,12 +18,14 @@
         "custom/menu" = {
           format = "󰀻";
           tooltip = false;
-          on-click = "rofi -show drun";
+          on-click = "rofi -show drun -theme ${config.home.homeDirectory}/.config/rofi/config.rasi";
         };
 
         "hyprland/workspaces" = {
           format = "{icon}";
           on-click = "activate";
+          all-outputs = true;
+	        sort-by-number = true;
           format-icons = {
             "1" = "1";
             "2" = "2";
