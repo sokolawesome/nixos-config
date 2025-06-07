@@ -26,7 +26,7 @@
 
   users.users.sokolawesome = {
     isNormalUser = true;
-    description = "Aleksandr Sokolov";
+    description = "sokolawesome";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
