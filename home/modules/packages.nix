@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     kitty
+    htop
     rofi-wayland
     dunst
     wl-clipboard

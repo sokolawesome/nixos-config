@@ -15,8 +15,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: DeterminateSystems/nix-installer-action@v12
+        with:
+          extra-conf: |
+            substituters = https://cache.nixos.org https://cache.garnix.io https://nix-community.cachix.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbCHOBAkS3Nq3R0wKX4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+            connect-timeout = 5
+            stalled-download-timeout = 10
 
       - uses: DeterminateSystems/magic-nix-cache-action@v7
+        continue-on-error: true
 
       - name: "Install Nix Lint Tools"
         run: |
@@ -48,10 +55,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: DeterminateSystems/nix-installer-action@v12
+        with:
+          extra-conf: |
+            substituters = https://cache.nixos.org https://cache.garnix.io https://nix-community.cachix.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbCHOBAkS3Nq3R0wKX4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
 
       - uses: DeterminateSystems/magic-nix-cache-action@v7
 
       - name: "Build .#${{ matrix.system }}"
         run: |
           set -euo pipefail
-          nix build .#${{ matrix.system }}
+          nix build .#${{ matrix.system }} --print-build-logs
+
+      - name: "Show build info"
+        run: |
+          nix path-info .#${{ matrix.system }} --json | jq '.[] | {path: .path, size: .narSize}'

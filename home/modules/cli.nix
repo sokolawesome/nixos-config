@@ -36,7 +36,7 @@
       };
       git.paging = {
         colorArg = "always";
-        pager = "delta --dark --paging=never";
+        pager = "git-delta --dark --paging never";
       };
       os.edit = "vscode";
     };
