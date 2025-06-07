@@ -6,7 +6,12 @@
     #--MONITORS & GENERAL--
     # -----------------------------------------------------
     monitor=,preferred,auto,1
-    exec-once = waybar & dunst & hyprpaper & wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store & wl-clip-persist --clipboard regular
+    exec-once = waybar
+    exec-once = dunst
+    exec-once = hyprpaper
+    exec-once = wl-paste --type text --watch cliphist store -max-items 100
+    exec-once = wl-paste --type image --watch cliphist store -max-items 100
+    exec-once = wl-clip-persist --clipboard regular
 
     # -----------------------------------------------------
     #--VARIABLES--
@@ -52,7 +57,7 @@
     #--KEYBINDS--
     # -----------------------------------------------------
     #--Applications--
-    bind = $mainMod, Enter, exec, $terminal
+    bind = $mainMod, Return, exec, $terminal
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, D, exec, $menu
     bind = $mainMod ALT, V, exec, rofi -modi "clipboard:cliphist-rofi" -show clipboard -kb-cancel "Escape" -theme ${config.home.homeDirectory}/.config/rofi/config.rasi
