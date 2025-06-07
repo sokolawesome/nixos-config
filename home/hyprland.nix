@@ -55,7 +55,7 @@
     bind = $mainMod, Enter, exec, $terminal
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, D, exec, $menu
-    bind = $mainMod, ALT, V, exec, rofi -modi "clipboard:rofi-cliphist-integration" -show clipboard -kb-cancel "Escape,Control+c"
+    bind = $mainMod, V, exec, rofi -modi "clipboard:rofi-cliphist-integration" -show clipboard -kb-cancel "Escape,Control+c"
     bind = $mainMod, H, exec, keyhint
 
     #--Window Management--
