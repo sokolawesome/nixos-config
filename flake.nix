@@ -30,7 +30,7 @@
     in {
       nixosConfigurations = {
         homelab = mkSystem "homelab" ./hosts/homelab/configuration.nix;
-        devmachine = mkSystem "devmachine" ./hosts/devmachine/configuration.nix;
+        # devmachine = mkSystem "devmachine" ./hosts/devmachine/configuration.nix;
       };
     };
 }

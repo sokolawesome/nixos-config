@@ -8,6 +8,7 @@
 
   services.cliphist = {
     enable = true;
-    maxEntries = 100;
+    allowImages = true;
+    extraOptions = [ "-max-items" "100" ];
   };
 }
