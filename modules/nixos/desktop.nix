@@ -26,13 +26,13 @@
 
   services.displayManager.defaultSession = "hyprland";
 
-  environment.systemPackages = [(
-    pkgs.catppuccin-sddm.override {
+  environment.systemPackages = [
+    (pkgs.catppuccin-sddm.override {
       flavor = "macchiato";
-      font  = "JetBrainsMono Nerd Font";
+      font = "JetBrainsMono Nerd Font";
       fontSize = "12";
-    }
-  )];
+    })
+  ];
 
   programs.firefox.enable = true;
 }
