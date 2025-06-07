@@ -1,4 +1,3 @@
-# In home/waybar.nix
 { pkgs, ... }:
 
 {

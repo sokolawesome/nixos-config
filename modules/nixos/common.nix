@@ -10,6 +10,15 @@
 
   services.fstrim.enable = true;
 
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    settings.auto-optimise-store = true;
+  };
+
   environment.systemPackages = with pkgs; [ git git-extras wget curl ];
 
   users.users.sokolawesome = {
