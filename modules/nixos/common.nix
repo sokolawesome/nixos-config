@@ -22,6 +22,10 @@
 
   networking.networkmanager.enable = true;
 
+  services.fstrim.enable = true;
+
+  services.tailscale.enable = true;
+
   environment.systemPackages = with pkgs; [ git git-extras wget curl ];
 
   users.users.sokolawesome = {

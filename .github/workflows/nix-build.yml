@@ -1,0 +1,54 @@
+name: "Nix CI & Build"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  checks:
+    name: "Lint & CI Checks"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v12
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+
+      - name: "Install Nix Lint Tools"
+        run: |
+          nix profile install nixpkgs#statix nixpkgs#deadnix nixpkgs#alejandra
+
+      - name: "Check Flake"
+        run: nix flake check --all-systems
+
+      - name: "Run statix"
+        run: statix check
+
+      - name: "Run deadnix"
+        run: deadnix .
+
+      - name: "Check formatting with alejandra"
+        run: alejandra --check .
+
+  build:
+    name: "Build NixOS - ${{ matrix.system }}"
+    needs: checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        system: [ homelab, devmachine ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v12
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+
+      - name: "Build .#${{ matrix.system }}"
+        run: |
+          set -euo pipefail
+          nix build .#${{ matrix.system }}

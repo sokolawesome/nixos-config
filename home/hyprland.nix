@@ -6,8 +6,7 @@
     #--MONITORS & GENERAL--
     # -----------------------------------------------------
     monitor=,preferred,auto,1
-    exec-once = waybar & dunst
-    exec-once = hyprpaper
+    exec-once = waybar & dunst & hyprpaper
 
     # -----------------------------------------------------
     #--VARIABLES--
@@ -53,15 +52,19 @@
     #--KEYBINDS--
     # -----------------------------------------------------
     #--Applications--
-    bind = $mainMod, Q, exec, $terminal
+    bind = $mainMod, Enter, exec, $terminal
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, D, exec, $menu
+    bind = $mainMod, ALT, V, exec, rofi -modi "clipboard:rofi-cliphist-integration" -show clipboard -kb-cancel "Escape,Control+c"
+    bind = $mainMod, H, exec, keyhint
 
     #--Window Management--
-    bind = $mainMod, C, killactive,
+    bind = $mainMod, Q, killactive,
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
+    bind = $mainMod SHIFT, G, exec, hyprctl --batch "keyword animations:enabled 0; keyword decoration:blur:enabled 0; keyword decoration:drop_shadow 0; keyword decoration:rounding 0"
+    bind = $mainMod ALT, G, exec, hyprctl --batch "keyword animations:enabled 1; keyword decoration:blur:enabled 1; keyword decoration:drop_shadow 1; keyword decoration:rounding 10"
 
     #--Move focus--
     bind = $mainMod, left, movefocus, l
@@ -70,16 +73,16 @@
     bind = $mainMod, down, movefocus, d
 
     #--Move windows--
-    bind = $mainMod SHIFT, left, movewindow, l
-    bind = $mainMod SHIFT, right, movewindow, r
-    bind = $mainMod SHIFT, up, movewindow, u
-    bind = $mainMod SHIFT, down, movewindow, d
+    bind = $mainMod ALT, left, movewindow, l
+    bind = $mainMod ALT, right, movewindow, r
+    bind = $mainMod ALT, up, movewindow, u
+    bind = $mainMod ALT, down, movewindow, d
 
     #--Resize windows--
-    binde = $mainMod CTRL, right, resizeactive, 10 0
-    binde = $mainMod CTRL, left, resizeactive, -10 0
-    binde = $mainMod CTRL, up, resizeactive, 0 -10
-    binde = $mainMod CTRL, down, resizeactive, 0 10
+    binde = $mainMod SHIFT, right, resizeactive, 10 0
+    binde = $mainMod SHIFT, left, resizeactive, -10 0
+    binde = $mainMod SHIFT, up, resizeactive, 0 -10
+    binde = $mainMod SHIFT, down, resizeactive, 0 10
 
     #--Workspaces--
     # Using number keys

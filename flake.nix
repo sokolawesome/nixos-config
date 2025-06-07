@@ -9,14 +9,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      homelab = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      mkSystem = name: hostConfig: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/homelab/configuration.nix
-
+          hostConfig
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -28,24 +27,10 @@
           }
         ];
       };
-
-      devmachine = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/devmachine/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.sokolawesome = {
-              imports = [ ./home/sokolawesome.nix ];
-            };
-          }
-        ];
+    in {
+      nixosConfigurations = {
+        homelab = mkSystem "homelab" ./hosts/homelab/configuration.nix;
+        devmachine = mkSystem "devmachine" ./hosts/devmachine/configuration.nix;
       };
     };
-  };
 }

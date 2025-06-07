@@ -1,57 +1,59 @@
-{ ... }:
+# In home/waybar.nix
+{ pkgs, ... }:
 
 {
-  xdg.configFile = {
-    "waybar/config".text = ''
-      {
-          "layer": "top",
-          "position": "top",
-          "height": 30,
-          "modules-left": ["hyprland/workspaces", "hyprland/window"],
-          "modules-center": ["clock"],
-          "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray"],
-          "hyprland/workspaces": {
-              "format": "{icon}",
-              "on-click": "activate"
-          },
-          "tray": {
-              "icon-size": 18,
-              "spacing": 10
-          },
-          "clock": {
-              "format": " {:%H:%M}",
-              "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-          },
-          "pulseaudio": {
-              "format": "{volume}% {icon}",
-              "format-muted": " Muted",
-              "on-click": "pamixer -t",
-              "format-icons": {
-                  "headphone": "",
-                  "hands-free": "",
-                  "headset": "",
-                  "phone": "",
-                  "portable": "",
-                  "car": "",
-                  "default": ["", ""]
-              }
-          },
-          "network": {
-              "format-wifi": "  {essid}",
-              "format-ethernet": " {ifname}",
-              "format-disconnected": "⚠ Disconnected"
-          },
-          "cpu": {
-              "format": " {usage}%",
-              "tooltip": true
-          },
-          "memory": {
-              "format": " {}%"
-          }
-      }
-    '';
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 30;
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+        modules-center = [ "clock" ];
+        modules-right = [ "pulseaudio" "network" "cpu" "memory" "tray" ];
 
-    "waybar/style.css".text = ''
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          on-click = "activate";
+        };
+        tray = {
+          icon-size = 18;
+          spacing = 10;
+        };
+        clock = {
+          format = " {:%H:%M}";
+          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+        pulseaudio = {
+          format = "{volume}% {icon}";
+          format-muted = " Muted";
+          on-click = "pamixer -t";
+          format-icons = {
+            headphone = "";
+            "hands-free" = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" ];
+          };
+        };
+        network = {
+          "format-wifi" = "  {essid}";
+          "format-ethernet" = " {ifname}";
+          "format-disconnected" = "⚠ Disconnected";
+        };
+        cpu = {
+          format = " {usage}%";
+          tooltip = true;
+        };
+        memory = {
+          format = " {}%";
+        };
+      };
+    };
+    style = ''
       * {
           border: none;
           border-radius: 0;
