@@ -24,13 +24,22 @@
     zed-editor
   ];
 
+  programs.git = {
+    enable = true;
+    userName = "sokolawesome";
+    userEmail = "sokolawesome@gmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
   xdg.configFile."hypr/hyprland.conf".text = ''
       # -----------------------------------------------------
       #--MONITORS & GENERAL--
       # -----------------------------------------------------
       monitor=,preferred,auto,1
       exec-once = waybar & dunst
-  
+
       # -----------------------------------------------------
       #--VARIABLES--
       # -----------------------------------------------------
@@ -38,7 +47,7 @@
       $terminal = kitty
       $fileManager = thunar
       $menu = rofi -show drun
-  
+
       # -----------------------------------------------------
       #--CORE--
       # -----------------------------------------------------
@@ -70,7 +79,7 @@
           pseudotile = yes
           preserve_split = yes
       }
-  
+
       # -----------------------------------------------------
       #--KEYBINDS--
       # -----------------------------------------------------
@@ -78,31 +87,31 @@
       bind = $mainMod, Q, exec, $terminal
       bind = $mainMod, E, exec, $fileManager
       bind = $mainMod, D, exec, $menu
-  
+
       #--Window Management--
       bind = $mainMod, C, killactive,
       bind = $mainMod, F, togglefloating,
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-  
+
       #--Move focus--
       bind = $mainMod, left, movefocus, l
       bind = $mainMod, right, movefocus, r
       bind = $mainMod, up, movefocus, u
       bind = $mainMod, down, movefocus, d
-  
+
       #--Move windows--
       bind = $mainMod SHIFT, left, movewindow, l
       bind = $mainMod SHIFT, right, movewindow, r
       bind = $mainMqd SHIFT, up, movewindow, u
       bind = $mainMod SHIFT, down, movewindow, d
-  
+
       #--Resize windows--
       binde = $mainMod CTRL, right, resizeactive, 10 0
       binde = $mainMod CTRL, left, resizeactive, -10 0
       binde = $mainMod CTRL, up, resizeactive, 0 -10
       binde = $mainMod CTRL, down, resizeactive, 0 10
-  
+
       #--Workspaces--
       # Using number keys
       bind = $mainMod, 1, workspace, 1
@@ -115,7 +124,7 @@
       bind = $mainMod, 8, workspace, 8
       bind = $mainMod, 9, workspace, 9
       bind = $mainMod, 0, workspace, 10
-  
+
       #--Move window to workspace--
       bind = $mainMod SHIFT, 1, movetoworkspace, 1
       bind = $mainMod SHIFT, 2, movetoworkspace, 2
@@ -127,15 +136,15 @@
       bind = $mainMod SHIFT, 8, movetoworkspace, 8
       bind = $mainMod SHIFT, 9, movetoworkspace, 9
       bind = $mainMod SHIFT, 0, movetoworkspace, 10
-  
+
       #--Scroll through workspaces--
       bind = $mainMod, mouse_down, workspace, e+1
       bind = $mainMod, mouse_up, workspace, e-1
-  
+
       #--Mouse bindings--
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
-  
+
       # -----------------------------------------------------
       #--SYSTEM & HARDWARE BINDS
       # -----------------------------------------------------
@@ -144,7 +153,7 @@
       bind = CTRL ALT, L, exec, swaylock # Lock screen
       bind = CTRL ALT, P, exec, wlogout -p # Power menu (wlogout)
       bindl= , xf86Sleep, exec, systemctl suspend
-  
+
       #--Volume and Media Control--
       bindel= , XF86AudioRaiseVolume, exec, pamixer -i 5 # Increase volume
       bindel= , XF86AudioLowerVolume, exec, pamixer -d 5 # Decrease volume
@@ -153,7 +162,7 @@
       bindl= , XF86AudioPlay, exec, playerctl play-pause # Play/Pause media
       bindl= , XF86AudioNext, exec, playerctl next # Next track
       bindl= , XF86AudioPrev, exec, playerctl previous # Previous track
-  
+
       #--Screenshots--
       # Screenshot a selected area and copy to clipboard
       bind = $mainMod, S, exec, grim -g "$(slurp)" - | wl-copy
@@ -163,4 +172,3 @@
       bind = $mainMod CTRL, S, exec, grim -g "$(slurp)" - | swappy -f -
     '';
 }
-
