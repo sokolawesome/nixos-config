@@ -6,7 +6,7 @@
     #--MONITORS & GENERAL--
     # -----------------------------------------------------
     monitor=,preferred,auto,1
-    exec-once = waybar & dunst & hyprpaper
+    exec-once = waybar & dunst & hyprpaper & wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store & wl-clip-persist --clipboard regular
 
     # -----------------------------------------------------
     #--VARIABLES--

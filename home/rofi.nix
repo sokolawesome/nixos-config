@@ -11,8 +11,6 @@
       font: "JetBrainsMono Nerd Font 12";
     }
 
-    @theme "catppuccin-macchiato"
-
     * {
       bg0: #24273a;
       bg1: #363a4f;
