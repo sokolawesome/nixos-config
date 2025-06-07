@@ -16,7 +16,7 @@
     rofi-wayland
     dunst
     wl-clipboard
-    thunar
+    xfce.thunar
     pamixer
     playerctl
     grim
@@ -29,7 +29,7 @@
     catppuccin-gtk
     catppuccin-cursors
     papirus-icon-theme
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
 
     zed-editor
   ];
@@ -42,7 +42,7 @@
       name = "Catppuccin-Macchiato-Standard-Blue-dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "blue" ];
-        variants = [ "macchiato" ];
+        variant = "macchiato";
       };
     };
     iconTheme = {
@@ -53,7 +53,7 @@
 
   home.pointerCursor = {
     name = "Catppuccin-Macchiato-Blue";
-    package = pkgs.catppuccin-cursors.override { accents = [ "blue" ]; };
+    package = pkgs.catppuccin-cursors.macchiatoBlue;
     size = 24;
   };
 
@@ -94,10 +94,12 @@
 
   services.hyprpaper = {
     enable = true;
-    settings = {
-      preload = [ ../assets/wallpaper.png ];
-      wallpaper = ",${../assets/wallpaper.png}";
-    };
+    # settings = {
+    #   preload = [ ../assets/wallpaper.png ];
+    #   wallpapers =[
+    #     "DP-1, ../assets/wallpaper.png"
+    #   ];
+    # };
   };
 
   programs.git = {
