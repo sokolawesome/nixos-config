@@ -21,7 +21,7 @@
       fg2: #a5adcb;
       accent: #89b4fa;
       urgent: #ed8796;
-      
+
       background-color: transparent;
       text-color: @fg0;
       margin: 0;
@@ -32,8 +32,8 @@
     window {
       background-color: @bg0;
       location: center;
-      width: 480;
-      border-radius: 12px;
+      width: 800;
+      border-radius: 0px;
       border: 2px;
       border-color: @accent;
     }
@@ -72,7 +72,7 @@
 
     listview {
       lines: 10;
-      columns: 1;
+      columns: 3;
       fixed-height: false;
       border: 1px 0 0;
       border-color: @bg1;

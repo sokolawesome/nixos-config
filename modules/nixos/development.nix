@@ -1,5 +1,13 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ dotnet-sdk_9 go rustup statix deadnix alejandra ];
+  environment.systemPackages = with pkgs; [
+    dotnet-sdk_9
+    omnisharp-roslyn
+    go
+    rustup
+    nodejs_24
+    statix
+    deadnix
+    alejandra ];
 }

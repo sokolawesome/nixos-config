@@ -10,7 +10,7 @@
         margin = "5 10 0 10";
         height = 35;
         spacing = 5;
-        
+
         modules-left = [ "custom/menu" "hyprland/window" ];
         modules-center = [ "hyprland/workspaces" "clock" ];
         modules-right = [ "pulseaudio" "network" "cpu" "memory" "tray" "custom/power" ];
@@ -111,7 +111,7 @@
     style = ''
       * {
         font-family: "JetBrainsMono Nerd Font";
-        font-size: 13px;
+        font-size: 14px;
         min-height: 0;
         border: none;
         border-radius: 0;
@@ -120,7 +120,7 @@
       window#waybar {
         background: rgba(36, 39, 58, 0.95);
         color: #cad3f5;
-        border-radius: 15px;
+        border-radius: 0px;
         border: 2px solid rgba(137, 180, 250, 0.3);
         margin: 5px 10px 0 10px;
         padding: 0;
@@ -128,7 +128,7 @@
 
       #workspaces {
         background: rgba(54, 58, 79, 0.8);
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px;
         padding: 0 8px;
       }
@@ -137,7 +137,7 @@
         padding: 4px 8px;
         background: transparent;
         color: #a5adcb;
-        border-radius: 8px;
+        border-radius: 0px;
         margin: 2px;
         transition: all 0.2s ease-in-out;
         min-width: 25px;
@@ -157,7 +157,7 @@
       #custom-menu {
         background: rgba(237, 135, 150, 0.8);
         color: #24273a;
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px 0 5px 5px;
         padding: 0 12px;
         font-size: 16px;
@@ -170,7 +170,7 @@
 
       #window {
         background: rgba(54, 58, 79, 0.6);
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px;
         padding: 0 12px;
         color: #b8c0e0;
@@ -179,7 +179,7 @@
       #clock {
         background: rgba(166, 218, 149, 0.8);
         color: #24273a;
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px;
         padding: 0 16px;
         font-weight: bold;
@@ -192,7 +192,7 @@
       #memory,
       #tray {
         background: rgba(54, 58, 79, 0.8);
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px 2px;
         padding: 0 12px;
         color: #cad3f5;
@@ -218,7 +218,7 @@
       #custom-power {
         background: rgba(237, 135, 150, 0.8);
         color: #24273a;
-        border-radius: 12px;
+        border-radius: 0px;
         margin: 5px 5px 5px 0;
         padding: 0 12px;
         font-size: 16px;
@@ -232,7 +232,7 @@
       tooltip {
         background: rgba(36, 39, 58, 0.95);
         border: 2px solid rgba(137, 180, 250, 0.3);
-        border-radius: 12px;
+        border-radius: 0px;
         color: #cad3f5;
       }
 
