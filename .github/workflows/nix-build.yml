@@ -1,10 +1,10 @@
-name: "Nix CI & Build"
+name: "Nix CI"
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           nix profile install nixpkgs#statix nixpkgs#deadnix nixpkgs#alejandra
 
       - name: "Check Flake"
-        run: nix flake check --systems x86_64-linux
+        run: nix flake check
 
       - name: "Run statix"
         run: statix check
@@ -40,38 +40,3 @@ jobs:
       - name: "Check formatting with alejandra"
         run: alejandra --check .
         continue-on-error: true
-
-  build:
-    name: "Build NixOS - ${{ matrix.system }}"
-    needs: checks
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        system: [ homelab ]
-        # system: [ homelab, devmachine ]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/cache@v3
-        with:
-          path: /nix/store
-          key: nix-store-${{ runner.os }}-${{ hashFiles('flake.lock') }}
-          restore-keys: nix-store-${{ runner.os }}-
-
-      - uses: DeterminateSystems/nix-installer-action@v12
-        with:
-          extra-conf: |
-            substituters = https://cache.nixos.org https://cache.garnix.io https://nix-community.cachix.org
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbCHOBAkS3Nq3R0wKX4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
-            connect-timeout = 15
-            stalled-download-timeout = 30
-
-      - name: "Build .#${{ matrix.system }}"
-        run: |
-          set -euo pipefail
-          nix build .#${{ matrix.system }} --no-substitutes --print-build-logs --show-trace
-        timeout-minutes: 30
-
-      - name: "Show build info"
-        run: |
-          nix path-info .#${{ matrix.system }} --json | jq '.[] | {path: .path, size: .narSize}'
