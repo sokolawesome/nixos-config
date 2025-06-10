@@ -4,22 +4,12 @@
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
-    firewall.enable = false;
-    firewalld = {
+    firewall = {
       enable = true;
-      zones = {
-        trusted = {
-          interfaces = [ "tailscale0" ];
-          trusted = true;
-        };
-      };
-      enableZones = true;
+      allowedTCPPorts = [ 22 80 443 ];
+      allowedUDPPorts = [ ];
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-    firewalld
-    firewalld-gui
-  ];
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }

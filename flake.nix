@@ -9,11 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ags.url = "github:aylur/ags";
   };
 
-  outputs =
-    { nixpkgs, self, ... }@inputs:
+  outputs = { nixpkgs, self, ... }@inputs:
     let
       username = "sokolawesome";
       system = "x86_64-linux";
@@ -22,12 +26,11 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-    in
-    {
+    in {
       nixosConfigurations = {
         devmachine = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/devmachine ];
+          modules = [ ./hosts/devmachine/configuration.nix ];
           specialArgs = {
             host = "devmachine";
             inherit self inputs username;
@@ -35,11 +38,12 @@
         };
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/homelab ];
+          modules = [ ./hosts/homelab/configuration.nix ];
           specialArgs = {
             host = "homelab";
             inherit self inputs username;
           };
         };
+      };
     };
 }
