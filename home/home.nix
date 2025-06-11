@@ -1,5 +1,5 @@
-{ pkgs, config, ... }:
+{ ... }:
 
 {
-  programs.fish.enable = true;
+  imports = [ ./hyprland ];
 }
