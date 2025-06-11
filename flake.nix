@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +35,10 @@
       nixosConfigurations = {
         devmachine = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/devmachine/configuration.nix ];
+          modules = [
+            ./hosts/devmachine/configuration.nix
+            inputs.stylix.nixosModules.stylix
+          ];
           specialArgs = {
             host = "devmachine";
             inherit self inputs username;
@@ -38,7 +46,10 @@
         };
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/homelab/configuration.nix ];
+          modules = [
+            ./hosts/homelab/configuration.nix
+            inputs.stylix.nixosModules.stylix
+          ];
           specialArgs = {
             host = "homelab";
             inherit self inputs username;

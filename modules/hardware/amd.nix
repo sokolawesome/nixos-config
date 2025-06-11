@@ -1,4 +1,4 @@
-{ inputs, pkgs, host, config, ... }:
+{ inputs, pkgs, ... }:
 
 let
   hyprland-pkgs =
@@ -10,11 +10,15 @@ in {
       enable32Bit = true;
       package = hyprland-pkgs.mesa;
       extraPackages = with pkgs; [
-        mesa-vulkan-drivers
         vaapiVdpau
         libvdpau-va-gl
-        libva-mesa-driver
+        libva
+        libva-utils
       ];
     };
+
+    enableRedistributableFirmware = true;
   };
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
 }
