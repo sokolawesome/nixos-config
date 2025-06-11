@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  home.packages = with pkgs; [ blueman ];
   services.blueman.enable = true;
 }
