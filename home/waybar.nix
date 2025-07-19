@@ -11,7 +11,15 @@
 
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [  "clock" ];
-        modules-right = [ "pulseaudio" "network" "cpu" "memory" "tray" "custom/power" ];
+        modules-right = [
+          "pulseaudio"
+          "custom/divider"
+          "cpu"
+          "custom/divider"
+          "memory"
+          "custom/divider"
+          "tray"
+        ];
 
         "hyprland/workspaces" = {
           on-click = "activate";
@@ -28,190 +36,103 @@
         };
 
         pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "󰖁 {volume}%";
-          format-icons = {
-            headphone = "󰋋";
-            hands-free = "󱡏";
-            headset = "󰋎";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["󰕿" "󰖀" "󰕾"];
-          };
+          format = "VOL: {volume}%";
+          format-muted = "VOL: MUT";
           scroll-step = 5;
           on-click = "pamixer -t";
-          on-scroll-up = "pamixer -i 5";
-          on-scroll-down = "pamixer -d 5";
-        };
-
-        network = {
-          interval = 5;
-          format-wifi = "󰤨 {essid} {signalStrength}%";
-          format-ethernet = "󰈀 Connected";
-          format-linked = "󰈀 {ifname}";
-          format-disconnected = "󰤭 Disconnected";
-          tooltip-format-wifi = "󰤨 {essid}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz";
-          tooltip-format-ethernet = "󰈀 {ifname}\nIP: {ipaddr}";
+          on-scroll-up = "pamixer -i 5 --allow-boost && ~/bin/hyprland/volume.sh";
+          on-scroll-down = "pamixer -d 5 --allow-boost && ~/bin/hyprland/volume.sh";
+          on-click-right = "pavucontrol";
+          tooltip = false;
         };
 
         cpu = {
           interval = 5;
-          format = "󰍛 {usage}%";
-          tooltip = true;
-          on-click = "kitty -e htop";
+          format = "USAGE: {usage}%";
+          on-click = "kitty -e btop";
+          tooltip = false;
         };
 
         memory = {
           interval = 5;
-          format = "󰾆 {percentage}%";
-          tooltip-format = "Memory: {used:0.1f}G / {total:0.1f}G";
-          on-click = "kitty -e htop";
+          format = "RAM: {used:0.1f}G";
+          on-click = "kitty -e btop";
+          tooltip = false;
         };
 
         tray = {
-          icon-size = 16;
-          spacing = 8;
+          icon-size = 18;
+          spacing = 10;
         };
 
-        "custom/power" = {
-          format = "󰐥";
+        "custom/divider" = {
+          format = " | ";
           tooltip = false;
-          on-click = "wlogout -p";
         };
       };
     };
 
     style = ''
+      @define-color base            #232136;
+      @define-color surface         #2a273f;
+      @define-color overlay         #393552;
+
+      @define-color muted           #6e6a86;
+      @define-color subtle          #908caa;
+      @define-color text            #e0def4;
+
+      @define-color love            #eb6f92;
+      @define-color gold            #f6c177;
+      @define-color rose            #ea9a97;
+      @define-color pine            #3e8fb0;
+      @define-color foam            #9ccfd8;
+      @define-color iris            #c4a7e7;
+
+      @define-color highlightLow    #2a283e;
+      @define-color highlightMed    #44415a;
+      @define-color highlightHigh   #56526e;
+
       * {
-        font-family: "JetBrainsMono Nerd Font";
-        font-size: 14px;
-        min-height: 0;
-        border: none;
-        border-radius: 0;
+          font-family: CaskaydiaCove Nerd Font;
+          font-size: 18px;
+          font-weight: 700;
+          padding: 0;
+          margin: 0;
       }
 
-      window#waybar {
-        background: rgba(36, 39, 58, 0.95);
-        color: #cad3f5;
-        border-radius: 0px;
-        border: 2px solid rgba(137, 180, 250, 0.3);
-        margin: 5px 10px 0 10px;
-        padding: 0;
+      #waybar {
+          color: @text;
+          background-color: alpha(@surface, 0.9);
       }
 
       #workspaces {
-        background: rgba(54, 58, 79, 0.8);
-        border-radius: 0px;
-        margin: 5px;
-        padding: 0 8px;
+          margin-left: 20px;
+      }
+
+      #tray {
+          margin-right: 20px;
       }
 
       #workspaces button {
-        padding: 4px 8px;
-        background: transparent;
-        color: #a5adcb;
-        border-radius: 0px;
-        margin: 2px;
-        transition: all 0.2s ease-in-out;
-        min-width: 25px;
-      }
-
-      #workspaces button.active {
-        background: rgba(137, 180, 250, 0.3);
-        color: #89b4fa;
-        box-shadow: inset 0 -2px 0 #89b4fa;
+          box-shadow: none;
+          text-shadow: none;
+          background: none;
+          transition: none;
+          border: none;
+          color: @text;
       }
 
       #workspaces button:hover {
-        background: rgba(137, 180, 250, 0.2);
-        color: #89b4fa;
+          color: alpha(@love, 0.9);
       }
 
-      #custom-menu {
-        background: rgba(237, 135, 150, 0.8);
-        color: #24273a;
-        border-radius: 0px;
-        margin: 5px 0 5px 5px;
-        padding: 0 12px;
-        font-size: 16px;
-        min-width: 30px;
-      }
-
-      #custom-menu:hover {
-        background: rgba(237, 135, 150, 1);
-      }
-
-      #window {
-        background: rgba(54, 58, 79, 0.6);
-        border-radius: 0px;
-        margin: 5px;
-        padding: 0 12px;
-        color: #b8c0e0;
-      }
-
-      #clock {
-        background: rgba(166, 218, 149, 0.8);
-        color: #24273a;
-        border-radius: 0px;
-        margin: 5px;
-        padding: 0 16px;
-        font-weight: bold;
-        min-width: 80px;
-      }
-
-      #pulseaudio,
-      #network,
-      #cpu,
-      #memory,
-      #tray {
-        background: rgba(54, 58, 79, 0.8);
-        border-radius: 0px;
-        margin: 5px 2px;
-        padding: 0 12px;
-        color: #cad3f5;
-        min-width: 60px;
-      }
-
-      #pulseaudio {
-        color: #89b4fa;
-      }
-
-      #network {
-        color: #8bd5ca;
-      }
-
-      #cpu {
-        color: #f4dbd6;
-      }
-
-      #memory {
-        color: #f0c6c6;
-      }
-
-      #custom-power {
-        background: rgba(237, 135, 150, 0.8);
-        color: #24273a;
-        border-radius: 0px;
-        margin: 5px 5px 5px 0;
-        padding: 0 12px;
-        font-size: 16px;
-        min-width: 30px;
-      }
-
-      #custom-power:hover {
-        background: rgba(237, 135, 150, 1);
+      #workspaces button.active {
+          color: @rose;
       }
 
       tooltip {
-        background: rgba(36, 39, 58, 0.95);
-        border: 2px solid rgba(137, 180, 250, 0.3);
-        border-radius: 0px;
-        color: #cad3f5;
-      }
-
-      tooltip label {
-        color: #cad3f5;
+          color: @text;
+          background-color: alpha(@surface, 0.9);
       }
     '';
   };

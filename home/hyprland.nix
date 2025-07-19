@@ -68,6 +68,66 @@
         animation = layers, 1, 1, easeInOutSine, slide
     }
 
+    #################################
+    #       GENERAL WINDOW RULES    #
+    #################################
+
+    # Prevent windows from being automatically maximized
+    windowrule = suppressevent maximize, class:.*
+    # Ignore focus for unnamed or background XWayland windows
+    windowrule = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
+
+    #################################
+    #     WORKSPACE ASSIGNMENTS     #
+    #################################
+
+    # Browsers
+    windowrulev2 = workspace 1 silent, class:^(zen|firefox|chromium)$
+
+    # Messaging apps
+    windowrulev2 = workspace 5 silent, class:^(org\.telegram\.desktop)$
+
+
+    #################################
+    #         FLOATING TOOLS        #
+    #################################
+
+    windowrulev2 = float, class:(thunar)
+    windowrulev2 = float, class:(blueman-manager)
+    windowrulev2 = float, class:^(nm-connection-editor)$
+    windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
+    windowrulev2 = center, class:^(org.kde.polkit-kde-authentication-agent-1)$
+    windowrulev2 = float, class:^(org.pulseaudio.pavucontrol)$
+    windowrulev2 = size 25% 75%, class:^(org.pulseaudio.pavucontrol)$
+    windowrulev2 = move 74.9% 33, class:^(org.pulseaudio.pavucontrol)$
+
+    #################################
+    #     PICTURE-IN-PICTURE RULES  #
+    #################################
+
+    # PiP windows
+    windowrulev2 = float, title:^(Picture-in-Picture)$
+    windowrulev2 = pin, title:^(Picture-in-Picture)$
+    windowrulev2 = size 25% 25%, title:^(Picture-in-Picture)$
+    windowrulev2 = move 74% 74%, title:^(Picture-in-Picture)$
+
+    #################################
+    #     FILE CHOOSER DIALOGS      #
+    #################################
+
+    # Float and center GTK portal dialogs
+    windowrulev2 = float, class:^(xdg-desktop-portal-gtk)$
+    windowrulev2 = size 50% 50%, class:^(xdg-desktop-portal-gtk)$
+    windowrulev2 = center, class:^(xdg-desktop-portal-gtk)$
+
+    #################################
+    #         OPTIONAL RULES        #
+    #################################
+
+    # Optional fallback for unnamed modal/dialog windows
+    windowrulev2 = float, class:^$, title:^Dialog$
+    windowrulev2 = center, class:^$, title:^Dialog$
+
     # -----------------------------------------------------
     #--KEYBINDS--
     # -----------------------------------------------------

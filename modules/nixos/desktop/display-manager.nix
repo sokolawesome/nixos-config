@@ -19,7 +19,7 @@
   environment.systemPackages = [
     (pkgs.catppuccin-sddm.override {
       flavor = "macchiato";
-      font = "JetBrainsMono Nerd Font";
+      font = "CaskaydiaCove Nerd Font";
       fontSize = "12";
     })
   ];

@@ -3,30 +3,42 @@
 {
   gtk = {
     enable = true;
-    theme = {
-      name = "Catppuccin-Macchiato-Standard-Blue-dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        variant = "macchiato";
-      };
-    };
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
+
+    theme = {
+      name = "palenight";
+      package = pkgs.palenight-theme;
+    };
+
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 
-  home.pointerCursor = {
-    name = "Catppuccin-Macchiato-Blue";
-    package = pkgs.catppuccin-cursors.macchiatoBlue;
-    size = 24;
-  };
+  home.sessionVariables.GTK_THEME = "palenight";
 
   programs.kitty = {
     enable = true;
     themeFile = "Catppuccin-Macchiato";
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "CaskaydiaCove Nerd Font";
       size = 12;
     };
   };
@@ -36,7 +48,7 @@
     settings = {
       global = {
         format = "<b>%s</b>\\n%b";
-        font = "JetBrainsMono Nerd Font 14";
+        font = "CaskaydiaCove Nerd Font 16";
         follow = "mouse";
       };
       urgency_low.background = "#363a4f";

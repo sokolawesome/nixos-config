@@ -21,7 +21,7 @@
     catppuccin-gtk
     catppuccin-cursors
     papirus-icon-theme
-    nerd-fonts.jetbrains-mono
+    nerd-fonts.caskaydia-cove
 
     telegram-desktop
     zed-editor

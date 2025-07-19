@@ -8,7 +8,7 @@
       window-format: "{w} · {c} · {t}";
       show-icons: true;
       icon-theme: "Papirus-Dark";
-      font: "JetBrainsMono Nerd Font 12";
+      font: "CaskaydiaCove Nerd Font 16";
     }
 
     * {
@@ -72,7 +72,7 @@
 
     listview {
       lines: 10;
-      columns: 3;
+      columns: 1;
       fixed-height: false;
       border: 1px 0 0;
       border-color: @bg1;
