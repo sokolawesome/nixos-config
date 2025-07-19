@@ -28,6 +28,7 @@
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/F855-1CAC";
     fsType = "exfat";
+    options = ["noatime" "uid=1000" "gid=1000" "mode=0775"];
   };
 
   swapDevices = [ ];

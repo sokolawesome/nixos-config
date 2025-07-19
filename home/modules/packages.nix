@@ -13,6 +13,7 @@
     pamixer
     playerctl
     grim
+    tree
     slurp
     swappy
     transmission_4-gtk
@@ -24,6 +25,5 @@
 
     telegram-desktop
     zed-editor
-    amnezia-vpn
   ];
 }

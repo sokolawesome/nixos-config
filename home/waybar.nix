@@ -7,45 +7,24 @@
       mainBar = {
         layer = "top";
         position = "top";
-        margin = "5 10 0 10";
-        height = 35;
-        spacing = 5;
+        height = 30;
 
-        modules-left = [ "custom/menu" "hyprland/window" ];
-        modules-center = [ "hyprland/workspaces" "clock" ];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [  "clock" ];
         modules-right = [ "pulseaudio" "network" "cpu" "memory" "tray" "custom/power" ];
 
-        "custom/menu" = {
-          format = "󰀻";
-          tooltip = false;
-          on-click = "rofi -show drun -theme ${config.home.homeDirectory}/.config/rofi/config.rasi";
-        };
-
         "hyprland/workspaces" = {
-          format = "{icon}";
           on-click = "activate";
-          all-outputs = true;
-	        sort-by-number = true;
-          format-icons = {
-            "1" = "1";
-            "2" = "2";
-            "3" = "3";
-            "4" = "4";
-            "5" = "5";
+          active-only = false;
+          format = "{id}";
+          persistent-workspaces = {
+            "*" = 5;
           };
         };
 
-        "hyprland/window" = {
-          format = "{}";
-          max-length = 40;
-          separate-outputs = true;
-        };
-
         clock = {
-          interval = 1;
-          format = " {:%H:%M}";
-          format-alt = " {:%A, %B %d, %Y}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format = "{:%H:%M | %d.%m.%Y}";
+          tooltip = false;
         };
 
         pulseaudio = {

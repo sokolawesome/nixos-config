@@ -36,7 +36,7 @@
     settings = {
       global = {
         format = "<b>%s</b>\\n%b";
-        font = "JetBrainsMono Nerd Font 10";
+        font = "JetBrainsMono Nerd Font 14";
         follow = "mouse";
       };
       urgency_low.background = "#363a4f";

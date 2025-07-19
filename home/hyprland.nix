@@ -5,6 +5,7 @@
     # -----------------------------------------------------
     #--MONITORS & GENERAL--
     # -----------------------------------------------------
+    monitor=HDMI-A-1,2560x1440@99.95,0x0,1
     monitor=,preferred,auto,1
     exec-once = waybar
     exec-once = dunst
@@ -27,31 +28,44 @@
     # -----------------------------------------------------
     input {
         kb_layout = us,ru
-        kb_options = grp:alt_shift_toggle
+        kb_options = grp:alt_shift_toggle,caps:escape
         follow_mouse = 1
+
+        repeat_rate = 40
+        repeat_delay = 210
+
+        sensitivity = 0
     }
     general {
-        gaps_in = 5
-        gaps_out = 10
-        border_size = 2
+        gaps_in = 3
+        gaps_out = 6
+        border_size = 4
+
         col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
         col.inactive_border = rgba(595959aa)
+
         layout = dwindle
+        allow_tearing = true
     }
+
     decoration {
-        rounding = 5
+        rounding = 0
+
+        active_opacity = 1.0
+        inactive_opacity = 1.0
+        fullscreen_opacity = 1.0
+
         blur {
-            enabled = true
-            size = 3
-            passes = 1
+            enabled = false
         }
     }
     animations {
-        enabled = yes
-    }
-    dwindle {
-        pseudotile = yes
-        preserve_split = yes
+        enabled = true
+        bezier = easeInOutSine, 0.05, 0.6, 0.05, 1
+        animation = windows, 1, 1, easeInOutSine, slide
+        animation = fade, 1, 1, easeInOutSine
+        animation = workspaces, 1, 3, easeInOutSine, slide
+        animation = layers, 1, 1, easeInOutSine, slide
     }
 
     # -----------------------------------------------------
@@ -69,8 +83,6 @@
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
-    bind = $mainMod SHIFT, G, exec, hyprctl --batch "keyword animations:enabled 0; keyword decoration:blur:enabled 0; keyword decoration:drop_shadow 0; keyword decoration:rounding 0"
-    bind = $mainMod ALT, G, exec, hyprctl --batch "keyword animations:enabled 1; keyword decoration:blur:enabled 1; keyword decoration:drop_shadow 1; keyword decoration:rounding 10"
 
     #--Move focus--
     bind = $mainMod, left, movefocus, l
@@ -116,6 +128,8 @@
     bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
     #--Scroll through workspaces--
+    bind = $mainMod, TAB, workspace, m+1
+    bind = $mainMod SHIFT, TAB, workspace, m-1
     bind = $mainMod, mouse_down, workspace, e+1
     bind = $mainMod, mouse_up, workspace, e-1
 
@@ -142,11 +156,7 @@
     bindl= , XF86AudioPrev, exec, playerctl previous # Previous track
 
     #--Screenshots--
-    # Screenshot a selected area and copy to clipboard
-    bind = $mainMod, S, exec, grim -g "$(slurp)" - | wl-copy
-    # Screenshot the entire screen and copy to clipboard
-    bind = $mainMod SHIFT, S, exec, grim - | wl-copy
-    # Screenshot a selected area and open in Swappy to edit/save
-    bind = $mainMod CTRL, S, exec, grim -g "$(slurp)" - | swappy -f -
+    bind = $mainMod, S, exec, bash -c 'region=$(slurp); sleep 0.25; [ -n "$region" ] && grim -g "$region" - | wl-copy'
+    bind = $mainMod CTRL, S, exec, bash -c 'region=$(slurp); sleep 0.25; [ -n "$region" ] && grim -g "$region" - | swappy -f -'
   '';
 }

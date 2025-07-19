@@ -19,7 +19,7 @@
     settings.auto-optimise-store = true;
   };
 
-  environment.systemPackages = with pkgs; [ git wget curl ];
+  environment.systemPackages = with pkgs; [ git wget curl exfat ];
 
   users.users.sokolawesome = {
     isNormalUser = true;
@@ -30,5 +30,5 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

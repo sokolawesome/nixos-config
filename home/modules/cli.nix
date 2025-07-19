@@ -11,7 +11,7 @@
       plugins = [ "git" ];
     };
     history = {
-      size = 10000;
+      size = 1000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
   };

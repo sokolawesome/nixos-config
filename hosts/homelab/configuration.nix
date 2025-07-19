@@ -6,6 +6,7 @@
 
     ../../modules/nixos/common.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/media-server.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/security.nix
   ];
