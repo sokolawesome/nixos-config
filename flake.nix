@@ -36,12 +36,10 @@
     in {
       nixosConfigurations = {
         homelab = mkSystem "homelab" ./hosts/homelab/configuration.nix;
-        # devmachine = mkSystem "devmachine" ./hosts/devmachine/configuration.nix;
       };
 
       packages.x86_64-linux = {
         homelab = self.nixosConfigurations.homelab.config.system.build.toplevel;
-        # devmachine = self.nixosConfigurations.devmachine.config.system.build.toplevel;
       };
     };
 }

@@ -1,15 +1,11 @@
 { pkgs, ... }:
 
 {
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    user = "sokolawesome";
+  };
 
-  services.radarr = {
-    enable = true;
-    openFirewall = true;
-  };
-  services.sonarr = {
-    enable = true;
-    openFirewall = true;
-  };
+  services.uptime-kuma.enable = true;
 }
