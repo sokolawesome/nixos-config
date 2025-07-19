@@ -9,6 +9,11 @@
     enableHidpi = true;
   };
 
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "sokolawesome";
+  };
+
   services.displayManager.defaultSession = "hyprland";
 
   environment.systemPackages = [

@@ -9,6 +9,7 @@
     exec-once = waybar
     exec-once = dunst
     exec-once = hyprpaper
+    exec-once = nm-applet
     exec-once = wl-paste --type text --watch cliphist store -max-items 100
     exec-once = wl-paste --type image --watch cliphist store -max-items 100
     exec-once = wl-clip-persist --clipboard regular

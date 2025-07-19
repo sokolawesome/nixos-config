@@ -12,6 +12,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  hardware.bluetooth.enable = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c09a6413-51ef-4541-af3f-d3833b2a7ee5";
     fsType = "ext4";
@@ -21,6 +23,11 @@
     device = "/dev/disk/by-uuid/B6E5-241C";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
+  };
+
+  fileSystems."/mnt/hdd" = {
+    device = "/dev/disk/by-uuid/F855-1CAC";
+    fsType = "exfat";
   };
 
   swapDevices = [ ];
@@ -38,4 +45,3 @@
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
-

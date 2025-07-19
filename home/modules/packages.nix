@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     kitty
-    htop
+    btop
     rofi-wayland
     dunst
     wl-clipboard
@@ -15,8 +15,7 @@
     grim
     slurp
     swappy
-    swaylock-effects
-    wlogout
+    transmission_4-gtk
 
     catppuccin-gtk
     catppuccin-cursors
@@ -24,8 +23,7 @@
     nerd-fonts.jetbrains-mono
 
     telegram-desktop
-    teams-for-linux
-    vscode
     zed-editor
+    amnezia-vpn
   ];
 }

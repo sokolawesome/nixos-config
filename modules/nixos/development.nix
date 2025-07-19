@@ -9,5 +9,8 @@
     nodejs_24
     statix
     deadnix
-    alejandra ];
+    alejandra
+    libcap
+    libgcc
+  ];
 }
