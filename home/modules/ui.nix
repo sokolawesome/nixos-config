@@ -34,7 +34,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
   };
 
   home.pointerCursor = {
@@ -81,6 +81,24 @@
         [ "${config.home.homeDirectory}/.nixos-config/assets/wallpaper.png" ];
       wallpaper =
         [ ",${config.home.homeDirectory}/.nixos-config/assets/wallpaper.png" ];
+    };
+  };
+
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+        };
+
+        listener = [
+          {
+            timeout = 360;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
     };
   };
 }
