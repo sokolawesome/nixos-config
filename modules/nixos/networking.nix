@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 6101 6102 6103 ];
+  };
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
   services.blueman.enable = true;

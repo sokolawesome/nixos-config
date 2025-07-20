@@ -16,7 +16,7 @@
     tree
     slurp
     swappy
-    transmission_4-gtk
+    qbittorrent
 
     catppuccin-gtk
     catppuccin-cursors

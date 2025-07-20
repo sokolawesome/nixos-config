@@ -32,6 +32,17 @@
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+  };
+
+  home.pointerCursor = {
+    name = "Numix-Cursor";
+    package = pkgs.numix-cursor-theme;
+    size = 24;
+  };
+
   home.sessionVariables.GTK_THEME = "palenight";
 
   programs.kitty = {
