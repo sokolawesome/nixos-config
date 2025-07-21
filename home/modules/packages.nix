@@ -9,6 +9,7 @@
     wl-clipboard
     cliphist
     hyprpaper
+    hypridle
     xfce.thunar
     pamixer
     playerctl

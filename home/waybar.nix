@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   programs.waybar = {
@@ -10,13 +10,15 @@
         height = 30;
 
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [  "clock" ];
+        modules-center = [  "clock" "custom/divider" "idle_inhibitor"];
         modules-right = [
           "pulseaudio"
           "custom/divider"
           "cpu"
           "custom/divider"
           "memory"
+          "custom/divider"
+          "hyprland/language"
           "custom/divider"
           "tray"
         ];
@@ -33,6 +35,14 @@
         clock = {
           format = "{:%H:%M | %d.%m.%Y}";
           tooltip = false;
+        };
+
+        idle_inhibitor = {
+            format = "{icon}";
+            format-icons = {
+                activated = " ";
+                deactivated = " ";
+            };
         };
 
         pulseaudio = {
@@ -58,6 +68,11 @@
           format = "RAM: {used:0.1f}G";
           on-click = "kitty -e btop";
           tooltip = false;
+        };
+
+        "hyprland/language" = {
+            format-en = "EN";
+            format-ru = "RU";
         };
 
         tray = {

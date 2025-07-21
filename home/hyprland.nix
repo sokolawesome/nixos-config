@@ -10,6 +10,7 @@
     exec-once = waybar
     exec-once = dunst
     exec-once = hyprpaper
+    exec-once = hypridle
     exec-once = nm-applet
     exec-once = wl-paste --type text --watch cliphist store -max-items 100
     exec-once = wl-paste --type image --watch cliphist store -max-items 100
@@ -137,6 +138,9 @@
     bind = $mainMod, D, exec, $menu
     bind = $mainMod ALT, V, exec, rofi -modi "clipboard:cliphist-rofi" -show clipboard -kb-cancel "Escape" -theme ${config.home.homeDirectory}/.config/rofi/config.rasi
     bind = $mainMod, H, exec, keyhint
+
+    # Restart Waybar
+    bind = $mainMod SHIFT, R, exec, pkill waybar; waybar
 
     #--Window Management--
     bind = $mainMod, Q, killactive,
