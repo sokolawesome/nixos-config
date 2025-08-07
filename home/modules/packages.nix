@@ -18,6 +18,7 @@
     slurp
     swappy
     qbittorrent
+    mkvtoolnix
 
     catppuccin-gtk
     catppuccin-cursors
