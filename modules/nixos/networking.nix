@@ -9,4 +9,10 @@
   programs.nm-applet.enable = true;
   services.blueman.enable = true;
   services.tailscale.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+    };
+  };
 }

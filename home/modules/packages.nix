@@ -11,6 +11,7 @@
     hyprpaper
     hypridle
     xfce.thunar
+    xfce.thunar-archive-plugin
     pamixer
     playerctl
     grim
@@ -18,7 +19,9 @@
     slurp
     swappy
     qbittorrent
-    mkvtoolnix
+    networkmanagerapplet
+    xarchiver
+    jellyfin-ffmpeg
 
     catppuccin-gtk
     catppuccin-cursors

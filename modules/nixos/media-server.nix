@@ -13,6 +13,7 @@
     user = "sokolawesome";
     settings = {
       MusicFolder = "/mnt/hdd/music";
+      Address = "0.0.0.0";
     };
   };
 

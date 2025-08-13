@@ -24,11 +24,11 @@
   users.users.sokolawesome = {
     isNormalUser = true;
     description = "sokolawesome";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "jellyfin" "navidrome" ];
     shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.05";
 }
