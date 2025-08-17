@@ -47,11 +47,12 @@
 
   programs.kitty = {
     enable = true;
-    themeFile = "Catppuccin-Macchiato";
+    themeFile = "tokyo_night_storm";
     font = {
       name = "CaskaydiaCove Nerd Font";
       size = 12;
     };
+    extraConfig = "map ctrl+shift+c copy_to_clipboard\n map = ctrl+shift+v paste_from_clipboard";
   };
 
   services.dunst = {

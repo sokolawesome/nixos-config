@@ -3,7 +3,8 @@
 {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 6101 6102 6103 ];
+    allowedTCPPorts = [ 8920 ];
+    allowedUDPPorts = [ 8920 ];
   };
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
@@ -11,6 +12,10 @@
   services.tailscale.enable = true;
   services.openssh = {
     enable = true;
+    openFirewall = true;
+    ports = [
+      2025
+    ];
     settings = {
       PermitRootLogin = "no";
     };

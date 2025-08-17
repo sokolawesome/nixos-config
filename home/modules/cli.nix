@@ -1,20 +1,7 @@
-{ pkgs, config, ... }:
+{ ... }:
 
 {
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "xiong-chiamiov-plus";
-      plugins = [ "git" ];
-    };
-    history = {
-      size = 1000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-  };
+  programs.fish.enable = true;
 
   programs.git = {
     enable = true;
@@ -34,7 +21,7 @@
           optionsTextColor = [ "#89b4fa" ];
         };
       };
-      os.edit = "vscode";
+      os.edit = "zeditor";
     };
   };
 }

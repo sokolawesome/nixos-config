@@ -7,6 +7,6 @@
     nixd
     statix
     deadnix
-    nixfmt
+    nixfmt-classic
   ];
 }

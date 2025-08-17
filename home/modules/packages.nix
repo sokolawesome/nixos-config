@@ -22,6 +22,8 @@
     networkmanagerapplet
     xarchiver
     jellyfin-ffmpeg
+    mkvtoolnix-cli
+    mpv
 
     catppuccin-gtk
     catppuccin-cursors
