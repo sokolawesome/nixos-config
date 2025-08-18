@@ -3,8 +3,8 @@
 {
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 8920 ];
-    allowedUDPPorts = [ 8920 ];
+    allowedTCPPorts = [ 8686 8920 ];
+    allowedUDPPorts = [ 8686 8920 ];
   };
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
