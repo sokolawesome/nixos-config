@@ -1,25 +1,25 @@
-{ pkgs, ... }:
+{ pkgs, constants, ... }:
 
 {
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "catppuccin-macchiato";
-    package = pkgs.kdePackages.sddm;
-    wayland.enable = true;
-    enableHidpi = true;
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      theme = "catppuccin-macchiato";
+      package = pkgs.kdePackages.sddm;
+      wayland.enable = true;
+      enableHidpi = true;
+    };
+    autoLogin = {
+      enable = true;
+      user = constants.user.name;
+    };
+    defaultSession = "hyprland";
   };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "sokolawesome";
-  };
-
-  services.displayManager.defaultSession = "hyprland";
 
   environment.systemPackages = [
     (pkgs.catppuccin-sddm.override {
       flavor = "macchiato";
-      font = "CaskaydiaCove Nerd Font";
+      font = constants.theme.font;
       fontSize = "12";
     })
   ];
