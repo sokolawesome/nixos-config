@@ -98,7 +98,7 @@
     bind = $mainMod, Return, exec, $terminal
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, D, exec, $menu
-    bind = $mainMod ALT, V, exec, rofi -modi "clipboard:cliphist-rofi" -show clipboard -kb-cancel "Escape" -theme ${constants.paths.config}/.config/rofi/config.rasi
+    bind = $mainMod ALT, V, exec, rofi -modi "clipboard:cliphist-rofi" -show clipboard -kb-cancel "Escape" -theme ${constants.paths.config}/rofi/config.rasi
     bind = $mainMod, H, exec, keyhint
     bind = $mainMod SHIFT, R, exec, pkill waybar; waybar
 

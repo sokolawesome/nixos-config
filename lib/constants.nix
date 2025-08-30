@@ -14,8 +14,7 @@
 
   ports = {
     ssh = 2025;
-    trilium = 8686;
-    uptime-kuma = 8920;
+    uptime-kuma = 3001;
     qbittorrent = 15151;
   };
 

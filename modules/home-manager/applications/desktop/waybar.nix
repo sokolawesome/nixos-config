@@ -10,7 +10,11 @@
         height = 30;
 
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" "custom/divider" "idle_inhibitor" ];
+        modules-center = [
+          "clock"
+          "custom/divider"
+          "idle_inhibitor"
+        ];
         modules-right = [
           "pulseaudio"
           "custom/divider"
@@ -38,8 +42,8 @@
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = " ";
-            deactivated = " ";
+            activated = " ";
+            deactivated = " ";
           };
         };
 

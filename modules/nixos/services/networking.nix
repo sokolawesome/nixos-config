@@ -6,8 +6,14 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ constants.ports.trilium constants.ports.uptime-kuma ];
-      allowedUDPPorts = [ constants.ports.trilium constants.ports.uptime-kuma ];
+      allowedTCPPorts = [
+        constants.ports.uptime-kuma
+        constants.ports.qbittorrent
+      ];
+      allowedUDPPorts = [
+        constants.ports.uptime-kuma
+        constants.ports.qbittorrent
+      ];
     };
   };
 
