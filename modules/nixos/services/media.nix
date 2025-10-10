@@ -8,14 +8,15 @@
       user = constants.user.name;
     };
 
-    navidrome = {
+    calibre-server = {
       enable = true;
-      openFirewall = true;
       user = constants.user.name;
-      settings = {
-        MusicFolder = constants.paths.music;
-        Address = "0.0.0.0";
-      };
+      group = "calibre";
+      port = constants.ports.calibre;
+      openFirewall = true;
+      libraries = [
+        constants.paths.books
+      ];
     };
   };
 }

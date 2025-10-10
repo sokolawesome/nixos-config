@@ -10,10 +10,10 @@
       "networkmanager"
       "wheel"
       "jellyfin"
-      "navidrome"
+      "docker"
       "video"
       "render"
-      "qbittorrent"
+      "calibre"
     ];
     shell = pkgs.fish;
   };

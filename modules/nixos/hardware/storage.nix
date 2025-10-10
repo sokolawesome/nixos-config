@@ -10,13 +10,22 @@
     "/boot" = {
       device = "/dev/disk/by-uuid/B6E5-241C";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [
+        "fmask=0077"
+        "dmask=0077"
+      ];
     };
 
     "${constants.paths.media}" = {
       device = "/dev/disk/by-uuid/F855-1CAC";
       fsType = "exfat";
-      options = [ "noatime" "uid=1000" "gid=1000" "mode=0775" ];
+      options = [
+        "noatime"
+        "nofail"
+        "uid=1000"
+        "gid=1000"
+        "mode=0775"
+      ];
     };
   };
 

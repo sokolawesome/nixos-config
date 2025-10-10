@@ -7,10 +7,17 @@
       efi.canTouchEfiVariables = true;
     };
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" ];
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "thunderbolt"
+        "usbhid"
+      ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+    ];
     extraModulePackages = [ ];
   };
 }

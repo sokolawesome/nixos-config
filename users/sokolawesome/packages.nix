@@ -12,5 +12,6 @@
     qbittorrent
     telegram-desktop
     zed-editor
+    rustdesk
   ];
 }

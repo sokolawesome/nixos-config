@@ -9,12 +9,13 @@
     config = "/home/sokolawesome/.config";
     assets = "/home/sokolawesome/.nixos-config";
     media = "/mnt/hdd";
-    music = "/mnt/hdd/music";
+    books = "/mnt/hdd/books";
   };
 
   ports = {
     ssh = 2025;
     uptime-kuma = 3001;
+    calibre = 8989;
     qbittorrent = 15151;
   };
 

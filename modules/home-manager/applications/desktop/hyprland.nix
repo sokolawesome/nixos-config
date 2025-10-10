@@ -26,10 +26,11 @@
     exec-once = dunst
     exec-once = hyprpaper
     exec-once = hypridle
-    exec-once = nm-applet
     exec-once = wl-paste --type text --watch cliphist store -max-items 100
     exec-once = wl-paste --type image --watch cliphist store -max-items 100
     exec-once = wl-clip-persist --clipboard regular
+    exec-once = nm-applet
+    exec-once = rustdesk
 
     $mainMod = SUPER
     $terminal = kitty
@@ -74,22 +75,15 @@
     windowrule = suppressevent maximize, class:.*
     windowrule = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
 
-    windowrulev2 = workspace 1 silent, class:^(zen|firefox|chromium)$
+    windowrulev2 = workspace 1 silent, class:^(firefox)$
     windowrulev2 = workspace 5 silent, class:^(org\.telegram\.desktop)$
+    windowrulev2 = workspace 4 silent, class:^(rustdesk)$
 
     windowrulev2 = float, class:(thunar)
     windowrulev2 = float, class:(blueman-manager)
     windowrulev2 = float, class:^(nm-connection-editor)$
     windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
     windowrulev2 = center, class:^(org.kde.polkit-kde-authentication-agent-1)$
-    windowrulev2 = float, class:^(org.pulseaudio.pavucontrol)$
-    windowrulev2 = size 25% 75%, class:^(org.pulseaudio.pavucontrol)$
-    windowrulev2 = move 74.9% 33, class:^(org.pulseaudio.pavucontrol)$
-
-    windowrulev2 = float, title:^(Picture-in-Picture)$
-    windowrulev2 = pin, title:^(Picture-in-Picture)$
-    windowrulev2 = size 25% 25%, title:^(Picture-in-Picture)$
-    windowrulev2 = move 74% 74%, title:^(Picture-in-Picture)$
 
     windowrulev2 = float, class:^(xdg-desktop-portal-gtk)$
     windowrulev2 = size 50% 50%, class:^(xdg-desktop-portal-gtk)$
@@ -99,7 +93,6 @@
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, D, exec, $menu
     bind = $mainMod ALT, V, exec, rofi -modi "clipboard:cliphist-rofi" -show clipboard -kb-cancel "Escape" -theme ${constants.paths.config}/rofi/config.rasi
-    bind = $mainMod, H, exec, keyhint
     bind = $mainMod SHIFT, R, exec, pkill waybar; waybar
 
     bind = $mainMod, Q, killactive,
@@ -127,22 +120,12 @@
     bind = $mainMod, 3, workspace, 3
     bind = $mainMod, 4, workspace, 4
     bind = $mainMod, 5, workspace, 5
-    bind = $mainMod, 6, workspace, 6
-    bind = $mainMod, 7, workspace, 7
-    bind = $mainMod, 8, workspace, 8
-    bind = $mainMod, 9, workspace, 9
-    bind = $mainMod, 0, workspace, 10
 
     bind = $mainMod SHIFT, 1, movetoworkspace, 1
     bind = $mainMod SHIFT, 2, movetoworkspace, 2
     bind = $mainMod SHIFT, 3, movetoworkspace, 3
     bind = $mainMod SHIFT, 4, movetoworkspace, 4
     bind = $mainMod SHIFT, 5, movetoworkspace, 5
-    bind = $mainMod SHIFT, 6, movetoworkspace, 6
-    bind = $mainMod SHIFT, 7, movetoworkspace, 7
-    bind = $mainMod SHIFT, 8, movetoworkspace, 8
-    bind = $mainMod SHIFT, 9, movetoworkspace, 9
-    bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
     bind = $mainMod, TAB, workspace, m+1
     bind = $mainMod SHIFT, TAB, workspace, m-1
@@ -151,19 +134,6 @@
 
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
-
-    bind = $mainMod, M, exit,
-    bind = CTRL ALT, L, exec, swaylock
-    bind = CTRL ALT, P, exec, wlogout -p
-    bindl= , xf86Sleep, exec, systemctl suspend
-
-    bindel= , XF86AudioRaiseVolume, exec, pamixer -i 5
-    bindel= , XF86AudioLowerVolume, exec, pamixer -d 5
-    bindl= , XF86AudioMute, exec, pamixer -t
-    bindl= , XF86AudioMicMute, exec, pamixer --default-source -t
-    bindl= , XF86AudioPlay, exec, playerctl play-pause
-    bindl= , XF86AudioNext, exec, playerctl next
-    bindl= , XF86AudioPrev, exec, playerctl previous
 
     bind = $mainMod, S, exec, bash -c 'region=$(slurp); sleep 0.25; [ -n "$region" ] && grim -g "$region" - | wl-copy'
     bind = $mainMod CTRL, S, exec, bash -c 'region=$(slurp); sleep 0.25; [ -n "$region" ] && grim -g "$region" - | swappy -f -'
